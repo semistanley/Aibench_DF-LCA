@@ -1,0 +1,69 @@
+# DF-LCA Benchmark Platform Configuration
+
+# Application Settings
+app:
+  name: "DF-LCA AI Benchmark Platform"
+  version: "1.0.0"
+  debug: false
+
+# API Settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+  workers: 1
+
+# Streamlit Settings
+streamlit:
+  host: "0.0.0.0"
+  port: 8501
+  theme:
+    primaryColor: "#4CAF50"
+    backgroundColor: "#FFFFFF"
+    secondaryBackgroundColor: "#F0F2F6"
+
+# Database Settings
+database:
+  url: "sqlite+aiosqlite:///./dflca_benchmark.db"
+  echo: false
+  pool_size: 5
+
+# JWT Authentication
+jwt:
+  secret: "${JWT_SECRET:dev-only-secret-change-in-production}"
+  algorithm: "HS256"
+  access_token_expire_minutes: 30
+
+# Model Registry
+models:
+  default_provider: "local"
+  cache_dir: "./.model_cache"
+
+# Evaluation Settings
+evaluation:
+  default_energy_method: "cpu_estimate"
+  sample_interval_s: 0.25
+  timeout_seconds: 300
+
+# Monitoring (Prometheus)
+monitoring:
+  enabled: true
+  port: 9090
+  metrics_path: "/metrics"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/dflca_benchmark.log"
+
+# Report Generation
+reports:
+  output_dir: "./reports"
+  default_format: "html"
+  include_charts: true
+
+# Benchmark Tasks
+tasks:
+  cache_dir: "${HF_DATASETS_CACHE:~/.cache/huggingface/datasets}"
+  default_limit: 100

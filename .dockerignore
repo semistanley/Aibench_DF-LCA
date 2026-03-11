@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+*.md
+docs/
+
+# Tests
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+evaluations.db
+
+# Reports
+reports/
+*.html
+*.pdf
+
+# Cache
+.cache/
+__pycache__/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PDF files (large)
+*.pdf
+
+# Temporary files
+.cursor_tmp_*
+*.tmp
+
+# Environment
+.env
+.env.local

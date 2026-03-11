@@ -1,0 +1,959 @@
+TARGET_FILE: 已中一区top part2.pdf
+DOI: 10.1016/j.compag.2024.109206
+TITLE: Indicators to Digitization Footprint and How to Get Digitization Footprint (Part 2)
+
+--- PAGE 3 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+3
+the objectives assessed by DF more comprehensively, but based on the 
+characteristics that a good indicator should hold, as discussed by 
+Meadows, D. H., the vast majority of indicators in these three categories 
+will be screened out due to a lack of value and inappropriate content, 
+but at present, due to the lack of practical examples of DF, the discussion 
+of DF is still at an early stage ( Meadows, 1998 ). discussion is still at an 
+early stage. In DF modeling, the set of DF indicators will be limited by 
+the Context of DPU. The Context of DPU contains the hardware and VE 
+of DPU, and in the data lifecycle, the data will pass through multiple 
+DPUs. There is a lack of common indicators for these DPUs, so this paper 
+only proposes some common indicators to elaborate the composition of 
+the indicator set of DF. In the future, we still need to think and criticize 
+DF and DF-LCA, and these formative ideas will lead us to more repre -
+sentative and creative indicators. 
+Under the DF-LCA framework and methodology, the indicators for 
+evaluating a DF are derived from the DPU, which is conceptualized as an 
+abstract logical entity responsible for data processing. The assessment 
+begins with a topological analysis of DPUs within an information system 
+to understand their data input – output topology. This analysis helps in 
+identifying the output of a specific DPU and, consequently, the data link, 
+or the life cycle of the data associated with that DPU. To ensure the 
+comprehensiveness of this analysis, it ’ s crucial to trace the data lineage, 
+which establishes the integrity of the data link before indicators 
+collection from the DPUs in the network can commence. 
+In the process of collecting indicators, it ’ s important to note that the 
+set of DF indicators is influenced by the Context of the DPU, encom -
+passing both the hardware and the VE in which the DPU operates. Since 
+data traverses through multiple DPUs in its lifecycle, and each DPU is 
+characterized by different hardware and VE configurations, the set of 
+applicable indicators will vary across DPUs. Therefore, this paper pro -
+poses a selection of standard indicators to exemplify the composition of 
+the DF indicators set. 
+Once the relevant indicators have been identified, they are collected 
+and calculated according to the formulas prescribed in the DF-LCA 
+framework. These formulas take into account the time and data di -
+mensions pertinent to each DPU ’ s performance. In this context, an ’ in -
+dicator ’ refers to a parameter that quantifies the performance of the 
+DPU, while ’ metrics ’ denote the measurable and collectible data within 
+the virtual or physical environment ( EDRO C ´esar TEBALDI, 2017 ). The 
+methodology for calculating these metrics is outlined in Equation (1) . 
+I = f
+T , D
+( U ( m | m ∈ U
+M
+) ) (1)  
+where I denotes the elements of the indicators collection of the DPU, 
+U ( m | m ∈ U
+M
+) denotes the set of metrics computed as metrics, I and m are 
+correlated, T is the time dimension, and D denotes the data dimension. 
+In the life cycle of data, the time dimension is the time experienced 
+by the data in passing through the DPU, and the DF of the data can be 
+obtained by collecting the metrics of the DPU within a limited time. The 
+time dimension is determined by the type of DPU, which can be classi -
+fied into continuous type and task type. The constant type refers to the 
+DPU that continuously outputs or processes data, while the task type 
+refers to the DPU that needs to be driven by tasks. The data dimension of 
+the DPU represents the information of the data in the life cycle process, 
+including the amount of data, the type of data, etc. By using the infor -
+mation in this dimension, it is possible to get the data change process in 
+the life cycle, and it is also possible to standardize the indicators based 
+on the amount of data. 
+The data volume-based standardization approach is an improvement 
+based on the standardization approach in LCA, where a single entity or 
+service is usually used as a standardized baseline, and by performing a 
+life cycle assessment on it, information on the resources consumed, 
+energy consumption, etc. over its life cycle can be obtained. For 
+example, ( Berthelot et al., 2024 ) found that a generative AI service will 
+generate up to 360 tonnes of carbon dioxide equivalent per year for a 
+given number of users through the LCA approach. This standardized 
+approach allows for a uniform metric by which the resource consump -
+tion of entities or services can be compared within the same category. In 
+DF-LCA, it is also possible to obtain comparable indicators by moni -
+toring the data dimensions and standardizing the indicators based on the 
+amount of data. However, this process can lead to changes in the un -
+certainty of the indicators due to the variability in implementing the 
+different DF-LCA methodologies. Therefore, there is also a need to 
+implement and analyze the specifications of the implementation of the 
+DF-LCA methodology to determine its validity, gaps, limitations, and 
+further objectives to support DF development. 
+After qualifying the temporal dimension of DPU during the data 
+lifecycle, collecting relevant metrics through monitoring devices in both 
+physical and VE is possible. There are two primary forms of metric 
+collection: real-time and average. In the process of metric collection, 
+ideally, the metric of DPU is expressed as a function over time, and by 
+integrating this function in the time dimension, the overall indicators of 
+DPU in the time dimension can be obtained, and finally, the indicators is 
+assigned to the output data volume of data dimension. The standard DF 
+indicators can be obtained, as shown in Equation (2) . 
+I =
+∫
+T
+0
+f [ m
+1
+( t ) , m
+2
+( t ) , ..., m
+N
+( t ) ] dt
+D
+(2)  
+where m ( t ) denotes a metric function that varies over continuous time, 
+and D is the amount of output data within the time dimension of that 
+DPU. 
+However, the detection accuracy of most monitoring devices needs 
+to meet the standard of real-time collection of metrics, and the vast 
+majority of the metrics are collected in discrete time. We can calculate 
+the metrics in discrete time to finally get the indicators of DPU so that 
+the computed hands will have some errors, as shown in Equation (3) . 
+I =
+∑
+N
+i = 1
+f [ m
+1
+( i ) , m
+2
+( i ) , ..., m
+N
+( i ) ] ×
+T
+N
+D
+(3)  
+where m ( i ) denotes the discrete-time varying metric function and D is 
+the amount of output data within the time dimension of this DPU. 
+In contrast, the average form of the indicator is a metric that cannot 
+Fig. 1. Relationship of the three dimension Indicator. Performance includes 
+MIPS, time data volume, floating-point computation, etc., energy includes en -
+ergy consumption, carbon dioxide emission, etc., and value includes cost, 
+profit, and time of use, etc. A denotes the performance indicator of the DPU, 
+and B denotes the performance indicator of the DPU ’ s environmental impact. 
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 4 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+4
+be monitored in real-time by the monitoring equipment. This may mean 
+that the degree of change in the metric is slow. It takes a long period 
+before the difference in the metric can be seen, such as the amount of 
+data generated in the early agricultural trial fields, where the change in 
+the amount of data may be captured by monitoring the amount of data 
+change per year ( Pezzuolo et al., 2021 ). The indicators can be calculated 
+for the average case by collecting the metrics over an average time, as 
+shown in equation (4) . 
+I =
+f
+ 
+m
+avg 1
+, m
+avg 2
+, ..., m
+avgN
+)
+× T
+D
+(4)  
+where m
+avg 
+denotes the metric of the average change within that time 
+dimension and D is the amount of output data within that DPU time 
+dimension. 
+In addition to the two main forms of scalar collection, DF metrics 
+include cost, profit, and accuracy. Such metrics directly reflect the sus -
+tainable nature of the DPU VE, but cannot be collected by real-time or 
+averaging of scalars, but using specific ways of collection and techniques 
+(e.g., real-time statistics, etc.). Such as unit data cost, the cost contains 
+hardware costs, software costs, operating costs, etc., which can only be 
+obtained through the collection of one by one, rather than a function 
+representation. 
+3. Modeling 
+3.1. Performance indicators 
+The growing volume of data is one of the characteristics of the 
+advancement of the digitalisation process, and the growth of the volume 
+of data is not only due to the fact that there are more devices generating 
+the data, but also due to the fact that the data output from the devices 
+has higher quality and higher resolution. Generating higher quality and 
+higher resolution data requires the device to have sufficient computing 
+power, which is related to the performance of the device indirectly 
+proves that the performance is stronger, so this study takes the perfor -
+mance indicator as one of the indicators to evaluate the DF. From the 
+DPU perspective, compute-centric metrics are the key elements to 
+quantitatively describe the performance of DPU, such as FLOPS, MIPS, 
+and so on. And from the data perspective, the indicators of data quality 
+of DPU-generated data can also indirectly reflect the performance of 
+DPU. Therefore, some common computational indicators as well as data 
+quality indicators are summarised and proposed as performance in -
+dicators for DF in the following. 
+3.1.1. Million instructions indicator (I
+MI
+) 
+Instructions can be basic arithmetic and logical operations that 
+represent the basic commands for the processor to perform scheduling 
+and computation. In VE, instructions are atomic operations that output 
+data from the DPU, and by measuring the number of instructions, the 
+computational power consumed in generating that data can be obtained. 
+In computer architecture evaluation, the number of instructions per unit 
+time is usually used as one of the indicators of processor performance, 
+such as Million Instructions Per Second (MIPS) ( Cai and Zhu, 2015 ). 
+MIPS is related to the semiconductor technology of the processor, not to 
+the complexity of the computation, and reflects the raw performance of 
+the processor. 
+Although MIPS can be used as a measure of processor performance, 
+due to its inevitable wide variation in non-homogeneous architectures or 
+non-homogeneous workloads, MIPS cannot be used with relative con -
+fidence in non-homogeneous computers; and it does not represent a 
+measure of system power, and there are differences in accuracy; MIPS 
+itself cannot compare the performance of two computers without as -
+sumptions about parallelism and the amount of workload ( Richardson, 
+1987 ), which led to the use of MIPS as a measure of performance Highly 
+skeptical in the early days. However, in DF-LCA, the data runs in the 
+same virtual environment. There is no need to worry about the MIPS 
+difference of non-homogeneous computers. You only need to monitor 
+the virtual environment to get the performance of the virtual environ -
+ment. Through this indicator, we can obtain the performance usage of 
+processing the data, thereby judging the efficiency of its performance 
+usage. Therefore, this study uses this indicator as one of the performance 
+indicators of the DPU. 
+In DF-LCA, the logical unit that operates on the data will be 
+abstracted as a DPU, and for the DPU that has a processor in the Context, 
+it can use the MIPS value as a metric that reflects the performance of that 
+DPU, and the formula for the number of millions of instructions per data 
+for the DPU is shown in (5): 
+I
+MI
+= f
+T , D
+( m
+MIPS
+)
+=
+m
+MIPS
+× T
+D
+(5)  
+where m
+MIPS 
+is the MIPS metric of the microprocessor, and the m
+MIPS 
+of 
+the DPU is determined by the processor in the Context, and the m
+MIPS 
+metrics can be obtained through benchmarking or SPEC databases 
+( Danowitz et al., 2002; Henning, 2006; Huang et al., 2010 ). 
+3.1.2. Floating point operations indicator (I
+FO
+) 
+FLOPs (Floating Point Operations) is the number of times a 
+computing device (e.g. microprocessor, graphics processor, etc.) per -
+forms floating point operations (e.g. addition, multiplication, division, 
+etc.), and FLOPS (Floating point Operations Per Second) indicates the 
+number of floating point operations performed per unit of time, which 
+can reflect the computational speed of the system, these two indicators 
+can be used as a measure of performance efficiency and peak perfor -
+mance, respectively ( Dolbeau, 2018; Dongarra et al., 2003; Goldberg, 
+1991 ).The simple view is that the more FLOPS, the better. With the 
+development of information technology, the computer ’ s performance 
+shows a flying development; the outside world is generally more pur -
+suing the Use of FLOPs as a measure of performance efficiency, which is 
+widely used in computational science, image processing, machine 
+learning, physics simulation and other fields. 
+FLOPS will change depending on the ‘complexity ’ of the computa -
+tional procedure. For example, multiplying two 4096 × 4096 matrices 
+using plus AVX intrinsics will generate 337.812 GFLOPS in 0.41 s, 
+whereas using Python will only generate 0.005GFLOPS in 25,552.48 s, 
+so we can measure the FLOPS to determine the ‘complexity ’ of the 
+programme, and thus evaluate its performance efficiency ( Leiserson 
+et al., 2020 ). Therefore, this paper uses the number of floating-point 
+operations per unit of data as an index to measure the computational 
+efficiency of the DPU, which is a logical unit that operates on the data. 
+The number of floating-point operations per unit of time can be obtained 
+by collecting the number of floating-point operations per unit of data, as 
+shown in the following formula (6): 
+I
+FO
+= f
+T , D
+( m
+FLOPs
+)
+=
+∫
+T
+0
+m
+FLOPS
+( t ) dt
+D
+(6) 
+In the above equation, m
+FLOPs 
+is the number of floating-point opera -
+tions of this DPU, and the number of floating-point operations of the 
+DPU during the running time can be obtained by integrating or 
+discretely summing m
+FLOPs 
+in the time dimension. In DPUs that perform 
+floating-point operations, FLOPS can be collected by introducing rele -
+vant modules ( Swall0w, 2018 ), or FLOPS of device DPUs can be 
+collected by monitoring software ( Grafana documentation, 2024 ). 
+3.1.3. Data speed indicator (I
+DS
+) 
+In the DF perspective, the rate of data generation is reflected in the 
+efficiency of the virtual environment in generating data, which is an 
+overall metric by which the rate at which the virtual environment 
+consumes resources can be obtained. An individual component may 
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 5 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+5
+generate thousands of data at any time; for example, when performing 
+floating point operations, the computer ’ s high-speed cache will 
+constantly store and release data ( Robinson and Devarakonda, 1990 ); 
+however, these data cannot be used as the final output of the computer. 
+The data generated by the DPU will occupy the storage resources in 
+the virtual environment; if this data is generated too fast, the storage 
+resources of the virtual environment will be limited, which directly af -
+fects the storage performance of the DPU, using data speed as a measure 
+of the DPU performance can assess the sustainability of the virtual 
+environment. Simply put, this is similar to warehouse management; too 
+fast in the warehouse speed will reduce the warehouse storage and may 
+cause congestion in the warehouse, thus reducing efficiency. Data speed 
+represents the speed of DPU output data, which is calculated by unit 
+monitoring time T, as shown in Equation (7) . The amount of data 
+generated by the VE over time can be obtained through this formula. 
+I
+DS
+= f
+D , T
+( m
+DV
+)
+=
+m
+DV
+T
+(7)  
+where I
+DS 
+denotes the speed at which this DPU generates data, and m
+DV 
+is the size of the data volume output by this DPU. Since the vast majority 
+of monitoring devices do not monitor the data generation speed in real 
+time, we denote I
+DS 
+by calculating the average data generation speed of 
+the DPU. 
+3.1.4. Effort rate 
+Effort, in the context of DPU, measures the computational resources 
+(both computation and storage) utilized to complete a data task. 
+Drawing a parallel from the natural environment, where a worker ’ s 
+effort can be assessed through work intensity and work time, the DPU ’ s 
+effort can similarly be gauged. In this analogy, the “ work intensity ” and 
+“ work time ” of the DPU correspond to the complexity of the task and the 
+duration of the DPU ’ s operation to output data, respectively ( Leiserson 
+et al., 2020 ). A high Effort rating indicates substantial use of the 
+Computing Unit and Storage Unit within the DPU, which may impact the 
+DPU ’ s future processing performance. Therefore, Effort is selected as 
+one of the key performance indicators for DPU. 
+Computing Unit = { CPU, GPU, NPU, TPU … } refers to the set con -
+sisting of processors, and Storage Unit refers to the set consisting of 
+memories in DPUs, which can be expressed as Storage Unit = {memory, 
+graphics memory, … }. Based on the above concepts, this study defines 
+the total amount of actual composite work of the DPU as Effort.. In 
+performance engineering research, the execution of the same compu -
+tational task in different programming languages can result in varying 
+“ working time ” and “ work intensity. ” This variation is attributable to the 
+complexity of the language used and its impact on the CPU ’ s workload 
+and intensity. 
+However, the total effort exerted by a DPU cannot be directly 
+quantified solely through time or intensity. By integrating the “ work 
+intensity ” of both the computation unit and the storage unit over the 
+“ work time, ” one can derive the total amount of work completed by 
+these units within a given period. This approach leads to a more 
+comprehensive understanding of the DPU ’ s workload. Formula (8) in 
+the study then provides a method for calculating the Effort rate of a DPU: 
+I
+Effort rate
+= f
+D , T
+ 
+m
+c
+, m
+s
+, m
+cp
+, m
+sp
+, m
+pa
+)
+=
+∫
+T
+0
+a × f ( m
+c
+( t )) + b × f ( m
+s
+( t )) dt
+D
+=
+∫
+T
+0
+m
+cp
+m
+pa
+× f ( m
+c
+( t )) +
+m
+sp
+m
+pa
+× f ( m
+s
+( t )) dt
+D
+(8) 
+In the above equation, f ( m
+c
+( t )) denotes the computing unit uti -
+lisation as a function of time, f ( m
+s
+( t )) denotes the storage unit utilisation 
+as a function of time, m
+c 
+denotes the computing unit utilisation, and m
+s 
+denotes the storage unit utilisation, which can be collected by the 
+monitoring equipment. a and b denote the weights of the computation, 
+which are calculated by the computing unit ’ s or the storage unit ’ s power 
+m
+P 
+than the total power denoted by the power machine, which can be 
+collected by the power machine, for the unit data Effort indicator. The 
+total power m
+pa 
+denotes that the power is able to be collected through 
+the power machine. I
+Effort rate 
+is the Effort indicator per unit of data. 
+3.1.5. Accuracy 
+Accuracy refers to the correctness of the prediction or classification 
+task. For the DPU of prediction or classification task, the accuracy rate 
+reflects the accuracy of the output data of the DPU; the higher the ac -
+curacy, the better the DPU can complete the prediction or classification 
+task. Accuracy and performance have always been a contradiction that 
+needs to be balanced in computing ( Cooper et al., 2021 ); in DF-LCA, we 
+need to assess the sustainability of the virtual environment, which 
+means we need to compare the accuracy with the sex and even the 
+performance efficiency, so that we can assess the sustainability of the 
+programme or task. Therefore, in this study, accuracy is used as one of 
+the performance metrics to describe the DPU. 
+Common methods for calculating the accuracy rate include Confu -
+sion Matrix, Mean Magnitude Relative Error (MMRE) and so on ( Luque 
+et al., 2019, Kitchenham et al., 2001 ). Among them, the confusion 
+matrix calculates the accuracy rate by comparing the proportion of true 
+negatives and true positives in all classification tasks, and the mathe -
+matical formula is shown below: 
+I
+CM
+=
+TP + TN
+TP + TN + FP + FN
+(9)  
+where True positive (TP) refers to the number of correctly classified or 
+predicted positive categories, True negative (TN) refers to the number of 
+correctly classified or predicted negative categories, False positive (FP) 
+refers to the number of incorrectly classified or predicted positive cat -
+egories, and False negative (FN) refers to the number of incorrectly 
+classified or predicted negative categories. 
+MMRE is a measure of the accuracy of a prediction model, where the 
+accuracy of a single prediction can be expressed as the relative error 
+between the predicted value and the true value, and the smaller the 
+value is, the more accurate the prediction result is. While MMRE rep -
+resents the prediction rate of the whole task, the accuracy of the pre -
+diction task is evaluated by adding up the absolute errors of all the 
+predictions. According to fomula, the mathematical formula of MMRE is 
+shown below: 
+I
+MMRE
+=
+∑
+| Actual   Predicition |
+Actual
+N
+(10)  
+where Actual is the actual measured value, Predicition is the predicted 
+value and N is the total number of predictions. 
+3.2. Energy indicators 
+The energy indicators of DF refer to the energy consumed by the DPU 
+and the environmental impact (e.g., CO2 emissions). At the intersection 
+of the AI field and the energy field, AI and machine learning be trans -
+formative ( Ohalete et al., 2023; Entezari et al., 2023 ), for example, 
+( Balasubramaniam et al., 2023 ) and others have designed models 
+through energy sensing that make car charging to become more effi -
+cient. However, it is questionable whether the great success achieved in 
+this field will be able to compensate for the huge energy demand in the 
+future, in that despite the increasing energy efficiency of ICT hardware, 
+the total energy demand of the installed hardware base is still growing 
+( Hilty et al., 2009 ). Therefore, in this study, energy indicators are used 
+as indicators to assess DF to judge IS ’ energy efficiency. 
+All types of DPUs need to be powered by electricity, and by moni -
+toring the power of DPU devices, the energy consumption in the time 
+dimension can be calculated as follows in Equation (11) : 
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 6 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+6
+I
+EC
+= f
+T , D
+( m
+p
+)
+=
+∫
+T
+0
+m
+p
+( t ) dt
+D
+(11)  
+where m
+p 
+denotes the power of the DPU, which can be obtained by 
+monitoring through hardware and software. In monitoring systems, 
+there exist dashboards that monitor the power, and in addition to this, 
+the energy consumption of the device can be predicted by the perfor -
+mance of the device ( Kawaguchi and Yachi, 2015; Grafana documen -
+tation, 2024 ). In real world environments, it is also possible to check the 
+power of the equipment by means of a dynamometer. 
+In addition to this, we should be concerned about carbon emissions, 
+as the energy composition of regions or countries varies due to geog -
+raphy, which leads to different carbon intensities in different regions or 
+countries. Carbon intensity is defined as the number of grams of carbon 
+dioxide (CO2) emitted by generating one kilowatt hour (kWh) of elec -
+tricity, and is related to the energy composition of the region ( L series, 
+2023 ). In the process of IT development, we should consider whether to 
+move services or data centres that consume more energy to regions or 
+countries with low carbon intensity, in order to help the world become 
+carbon neutral and achieve the goal of sustainable development. Carbon 
+emissions can be calculated from carbon intensity and energy con -
+sumption, and the formula for A is as follows: 
+I
+CE
+= m
+c
+× I
+EC
+(12)  
+where m
+c 
+denotes the carbon intensity of the DPU, which can be 
+calculated from the local energy composition, in addition to the DPU ’ s 
+ability to track the carbon dioxide produced by the DPU ’ s calculations 
+through online calculators, packages, and libraries ( Lannelongue et al., 
+2021; Lannelongue and Inouye, 2023 ). 
+3.3. Value indicators 
+The market usually determines the value of data, but the process of 
+generating value from data is through the continuous processing of data, 
+which ultimately results in valuable data; as Fernandez R C says: “ Data is 
+the oil, and like oil, it creates great value for individuals and organiza -
+tions that know how to mine and refine it ” ( Fernandez et al., 2002 ). In 
+IS, data undergoes the process of digging deeper and deeper. We can get 
+a picture of how data is generated and processed through the data 
+lifecycle. By quantifying the cost and profit of the data generation pro -
+cess, the value of the data can be obtained, which in turn indicates that 
+the data output from the DPU is more valuable and ultimately provides 
+decision support for the sustainability of VE. Hence, this paper takes the 
+cost and profit as indicators of the DPU. 
+Cost and profit are two essential concepts in business. In the life cycle 
+of data, cost represents the expenditure of monetary resources spent on 
+generating that data, including hardware costs, software costs, and 
+operational costs. According to Equation (1) , the costs that make up the 
+data life cycle are allocated to the unit of data to be able to get the cost 
+per unit of data, as shown in Equation (13) : 
+I
+CPD
+= f
+T , D
+( m
+Cost
+)
+=
+m
+Cost
+D
+(13)  
+where m
+Cost 
+denotes the amount of money spent to run the VE, which 
+usually includes labour costs, equipment costs, etc. 
+By comparing the cost per unit of data with the cost of data in the 
+market, it is possible to get a comparison of whether the data lifecycle 
+process is sustainable or not, e.g., in sensor networks, by the different 
+ways of deploying the sensor network, it is possible to get the deploy -
+ment scenarios with additional costs, and decision-makers tend to 
+choose the sensor network scenario with low cost and extensive output 
+data, because it means that more information will be available to sup -
+port decision making. 
+In the life cycle of data, profit can represent the value provided by the 
+data or the profit generated by the corresponding information system. 
+Through profit, we can get the value generated by that data or infor -
+mation system, which directly reflects the sustainability of the VE. Ac -
+cording to the indicator formula, the formula of profit per unit of data is 
+shown in equation (14) . 
+I
+PPD
+= f
+T , D
+( m
+Profit
+)
+=
+m
+Profit
+D
+=
+m
+Cost
+× m
+ROI
+D
+(14)  
+where m
+Profit 
+is the profit (from company statements) generated by the 
+data or this information system, and m
+ROI 
+denotes the corresponding 
+return on investment, Return on Investment (ROI) is one of the most 
+commonly used performance metrics and evaluation metrics in business 
+analysis ( Jacobson, 1987 ). 
+The cost of data as well as the time dimension of its value is difficult 
+to measure since it is difficult to predict how long the data will be useful. 
+Moreover, data may become meaningless in the moment after it may be 
+adopted for decision making, but in fact, these meaningless data can still 
+provide more valuable information when aggregated. Therefore, when 
+assessing the value, it is necessary to qualify the time dimension in order 
+to completely describe the amount of data generated by the whole sys -
+tem and the value of the data generated. 
+In addition to using data cost as well as profit as the value dimension 
+of sustainability, in VE we are able to describe the overall sustainability 
+of the VE by measuring the impact it has on the VE throughout the cycle 
+as an indicator of the overall sustainability of the VE. For example, in 
+wireless sensor networks, the lifecycle of a sensor node is the time when 
+the node ’ s battery runs out and it dies, and in the communication se -
+lection strategy of the sensor network, it is necessary to try to use energy 
+efficiently to allow the node to forward or to generate as much infor -
+mation as possible. Similarly, corresponding to VE, the virtual envi -
+ronmental impacts generated in VE (amount of data, number of 
+calculations, number of forwards) can be linked to the life cycle of VE, 
+and the sustainability of VE is described by measuring the VE impacts 
+throughout the cycle as shown in Eq. (15) : 
+I
+VES
+= f
+ 
+I , m
+period
+)
+(15)  
+where I
+DS 
+denotes the average speed of data volume generation and 
+m
+Period 
+denotes the time used by the DPU. 
+In real life, the life cycle of a VE can be affected by human decision- 
+making willingness, the capacity of the VE, failures, and other factors. 
+Under the influence of these factors, the VE will be upgraded or 
+migrated; in this case, we represent the capacity of the overall VE by 
+allocating the overall VE impact evenly to each upgrade or migration. 
+Sustainability is related to the cost of the VE, so in this paper, we allocate 
+the capacity of the overall VE to the cost of the VE as a measure of the 
+sustainability of the VE, as shown in Equation (16) : 
+I
+VES
+=
+∑
+N
+i = 1
+I
+DS
+( i )× m
+Period
+( i )
+m
+Cost
+N
+(16)  
+where N denotes the number of times the DPU has been updated or 
+migrated, and N is 1 when the DPU has not been migrated or updated. 
+3.4. Database use and design 
+The DPU database is a collection of inventory analyses. By per -
+forming indicator search on the DPU data ’ s, the indicators of the DPU 
+can be quickly obtained for the evaluation of DF. However, there is no 
+unified database, to address this problem, this paper proposes a database 
+design method for DPUs. 
+In LCA, the LCA database collects and integrates life cycle data of 
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 9 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+9
+the indicators in the database can be used directly, reducing the cost of 
+data collection. The indicator is a standardized DPU indicator; if the 
+current standardized DPU has been upgraded or improved due to the 
+change in the Context of this DPU, it is necessary to re-collect the in -
+dicator for the DPU and update the database. This is a continuous 
+updating process through the collection of indicators and Context for a 
+comprehensive record to ensure the unity of the operation of the DPU 
+indicator database; DPU indicator collection process is shown in Fig. 5 . 
+Wherein, the DPU exists in a VE, for which the metrics are collected 
+through a monitoring device in the VE, and for which the metrics are 
+collected through a monitoring device in the physical environment. 
+4. Conclusions and outlook 
+In this paper, we sort out the performance, energy, and value di -
+mensions proposed by DF-LCA and summarise and propose a standard 
+set of indicators to measure the capacity and capability of VE. For the 
+performance capacity of VE, this paper combs through the standard 
+indicators of computing capacity. It proposes a composite indicator of 
+Effort rate based on the relationship between the usage rate of devices 
+and computing tasks. For the energy of the VE, this paper analyses the 
+impact of VE energy on sustainability. It introduces carbon dioxide 
+emissions into the energy indicators of the VE. For the value of VE, this 
+paper discusses the cost and profit of VE and proposes sustainability 
+indicators based on the capacity of VE. We found that these generic 
+indicators can only be used as the initial indicators for establishing a DF 
+indicator system, and with the development of DF, these generic in -
+dicators may not have the conditions to become DF indicators, but they 
+can still be used as the basis for the initial DF research. In the future, we 
+will analyze indicators for VE in various domains and integrate them 
+into the DPU database. 
+This study also makes suggestions for the use and construction of the 
+DF-LCA database based on the database establishment method of LCA. 
+Currently, the LCA database has a relatively mature system under which 
+LCA databases of many industries have been established. The system is 
+also applicable to DF-LCA in terms of methodology. Hence, this paper 
+combines the system with the VE to carry out the construction and 
+ontology design of DF-LCA database. Moreover, because there is no 
+actual case of DF-LCA, this paper simulates the real situation and ex -
+plains the use of DF-LCA database. 
+The digital sustainability issue has been gradually advanced in the 
+public eye. With the advancement of the digitalization process, energy 
+consumption will become a significant issue for ICT. Meanwhile, cases of 
+assessing the energy consumption of AI through the LCA method have 
+already appeared, which suggests that it is a feasible approach to address 
+the issue of digital sustainability from an interdisciplinary point of view. 
+However, this research is still in the developmental stage, and further 
+integration of LCA with the characteristics of ICT is needed to develop 
+digital sustainability from an interdisciplinary perspective. On the other 
+hand, DF-LCA is an improved LCA approach in IS, which can provide a 
+complete assessment architecture. However, at present, DF-LCA is still in 
+the early stage of development. However, there are few examples of its 
+application at present, according to the anticipation, it can effectively 
+assess the sustainability of VE and provide a new solution for digital 
+sustainability by conducting life cycle analysis of IS. 
+CRediT authorship contribution statement 
+Qiang Huang: Writing – original draft, Resources, Funding acqui -
+sition, Conceptualization. Xu Wang: Writing – original draft, Visuali -
+zation, Conceptualization. Qi Gao: Writing – review & editing, 
+Conceptualization. Alberto. Carraro: Writing – review & editing. 
+Marco Sozzi: Writing – review & editing. Francesco Marinello: 
+Writing – review & editing. 
+Declaration of competing interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Fig. 4. DPU database construction among other things, the content of the context of this DPU contains as shown in Table 2 .  
+Fig. 5. Methodology for the use of database indicators.  
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 10 ---
+Computers and Electronics in Agriculture 224 (2024) 109206
+10
+Data availability 
+The authors are unable or have chosen not to specify which data has 
+been used. 
+Acknowledgements 
+Part of this study was carried out within the Agritech National 
+Research Center and received funding from the European Union Next- 
+GenerationEU (PIANO NAZIONALE DI RIPRESA E RESILIENZA 
+(PNRR) – MISSIONE 4 COMPONENTE 2, INVESTIMENTO 1.4 – D.D. 
+1032 17/06/2022, CN00000022). This manuscript reflects only the 
+authors ’ views and opinions, neither the European Union nor the Eu -
+ropean Commission can be considered responsible for them. 
+References 
+Amahmoud, A., El Attar, M.M., Meleishy, A., 2022. The evolution of life cycle assessment 
+approach: a review of past and future prospects. In: IOP Conference Series: Earth and 
+Environmental Science, Vol. 992, No. 1. IOP Publishing, p. 012002. https://doi.org/ 
+10.1088/1755-1315/992/1/012002 . 
+Balasubramaniam, S., Syed, M.H., More, N.S., Polepally, V., 2023. Deep learning-based 
+power prediction aware charge scheduling approach in cloud based electric 
+vehicular network. Eng. Appl. Artif. Intell. 121, 105869 https://doi.org/10.1016/j. 
+engappai.2023.105869 . 
+Berthelot, A., Caron, E., Jay, M., Lef `evre, L., 2024. Estimating the environmental impact 
+of Generative-AI services using an LCA-based methodology. Procedia CIRP 122, 
+707 – 712. https://doi.org/10.1016/j.procir.2024.01.098 . 
+Cai, L., Zhu, Y., 2015. The challenges of data quality and data quality assessment in the 
+big data era[J]. Data Sci. J. 14. https://doi.org/10.5334/dsj-2015-002 . 
+Cooper, A.F., Levy, K., De Sa, C., 2021. Accuracy-efficiency trade-offs and accountability 
+in distributed ML systems. In: Proceedings of the 1st ACM Conference on Equity and 
+Access in Algorithms, Mechanisms, and Optimization (pp. 1-11). https://doi.org/1 
+0.1145/3465416.3483289 . 
+Danowitz, A., Kelley, K., Mao, J., Stevenson, J.P., Horowitz, M., 2002. Recording 
+microprocessor history. ACM Queue Magazine 10 (4). https://doi.org/10.1145/ 
+2181796.2181798 . 
+Dervishaj, A., Gudmundsson, K., 2024. From LCA to circular design: a comparative study 
+of digital tools for the built environment. Resour. Conserv. Recycl. 200, 107291 
+https://doi.org/10.1016/j.resconrec.2023.107291 . 
+Dolbeau, R., 2018. Theoretical peak FLOPS per instruction set: a tutorial. 
+J. Supercomput. 74 (3), 1341 – 1377. https://doi.org/10.1007/s11227-017-2177-5 . 
+Dongarra, J.J., Luszczek, P., Petitet, A., 2003. The LINPACK benchmark: past, present 
+and future. Concur. Computat.: Pract. Exp. 15 (9), 803 – 820. https://doi.org/ 
+10.1002/cpe.728 . 
+EDRO C
+´
+ESAR TEBALDI. (2017). What are the main differences between metrics and 
+indicators?. https://www.opservices.com/differences-between-metrics-and-in 
+dicators/ engineering workshops (ICDEW 2010) (pp. 41-51). IEEE. 
+Entezari, A., Aslani, A., Zahedi, R., Noorollahi, Y., 2023. Artificial intelligence and 
+machine learning in energy systems: a bibliographic perspective. Energ. Strat. Rev. 
+45, 101017 https://doi.org/10.1016/j.esr.2022.101017 . 
+Fernandez, R.C., Subramaniam, P., Franklin, M.J., 2002. Data market platforms: trading 
+data assets to solve data problems[J]. arXiv preprint arXiv:2002.01047, 2020. htt 
+ps://doi.org/10.48550/arXiv.2002.01047 . 
+Frischknecht, R., Jungbluth, N., Althaus, H.J., Doka, G., Dones, R., Heck, T., 
+Spielmann, M., 2005. The ecoinvent database: overview and methodological 
+framework (7 pp). Int. J. Life Cycle Assess. 10, 3 – 9 . 
+George, G., Merrill, R.K., Schillebeeckx, S.J., 2021. Digital sustainability and 
+entrepreneurship: How digital innovations are helping tackle climate change and 
+sustainable development. Enterp. Theory Pract. 45 (5), 999 – 1027. https://doi.org/ 
+10.1177/1042258719899425 . 
+Goldberg, D., 1991. What every computer scientist should know about floating-point 
+arithmetic. ACM Comput. Surv. (CSUR) 23 (1), 5 – 48. https://doi.org/10.1145/ 
+103162.103163 . 
+Grafana documentation, 2024. https://grafana.com/docs/grafana/latest/ . 
+Henning, J.L., 2006. SPEC CPU2006 benchmark descriptions. ACM SIGARCH Computer 
+Architecture News, 34(4), 1-17. 
+Hilty, L.M., Coroama, V., De Eicker, M.O., Ruddy, T., Müller, E., 2009. The role of ICT in 
+energy consumption and energy efficiency. Report to the European Commission, DG 
+INFSO, Project ICT ENSURE: European ICT Sustainability Research, Graz University, 
+1, 1-60. https://www.researchgate.net/publication/267411194_The_Role_of_ICT_ 
+in_Energy_Consumption_and_Energy_Efficiency . 
+Huang, S., Huang, J., Dai, J., Xie, T., Huang, B., 2010. The HiBench benchmark suite: 
+Characterization of the MapReduce-based data analysis. In: 2010 IEEE 26th 
+International conference on data. 
+International Standardization Organization (ISO). 2006. ISO 14040 Environmental 
+management: Life cycle assessment: Principles and framework. Geneva, Switzerland: 
+International Organization for Standardization. 
+Jacobson, R., 1987. The validity of ROI as a measure of business performance[J]. Am. 
+Econ. Rev. 77 (3), 470 – 478. https://www.jstor.org/stable/1804112 . 
+Kawaguchi, S., Yachi, T., 2015. Adaptive power efficiency control by computer power 
+consumption prediction using performance counters. IEEE Trans. Ind. Appl. 52 (1), 
+407 – 413 . 
+Kawasaki, M., Kawamura, S., Tsukahara, M., Morita, S., Komiya, M., Natsuga, M., 2008. 
+Near-infrared spectroscopic sensing system for on-line milk quality assessment in a 
+milking robot. Comput. Electron. Agric. 63 (1), 22 – 27. https://doi.org/10.1016/j. 
+compag.2008.01.006 . 
+Kayad, A., Sozzi, M., Paraforos, D.S., et al., 2022. How many gigabytes per hectare are 
+available in the digital agriculture era? A digitization footprint estimation[J]. 
+Comput. Electron. Agric. 198, 107080 https://doi.org/10.1016/j. 
+compag.2022.107080 . 
+Kitchenham, B.A., Pickard, L.M., MacDonell, S.G., Shepperd, M.J., 2001. What accuracy 
+statistics really measure. IEE Proceedings-Software 148 (3), 81 – 85. https://doi.org/ 
+10.1049/ip-sen:20010506 . 
+Kranz, J., Zeiss, R., Beck, R., Gholami, R., Sarker, S., Watson, R.T., Whitley, E.A., 2022. 
+Practicing what we preach? Reflections on more sustainable and responsible IS 
+research and teaching practices. Commun. Assoc. Inf. Syst. 51 (1), 557 – 580. htt 
+p://eprints.lse.ac.uk/id/eprint/116677 . 
+L series, 2023. Environment and ICTs, climate change, e-waste, energy efficiency; 
+construction, installation and protection of cables and other elements of outside 
+plant L.1400-L.1499: Assessment methodologies of ICTs and CO2 trajectories. 
+Lannelongue, L., Grealey, J., Inouye, M., 2021. Green algorithms: quantifying the carbon 
+footprint of computation. Adv. Sci. 8 (12), 2100707. https://doi.org/10.1002/ 
+advs.202100707 . 
+Lannelongue, L., Inouye, M., 2023. Carbon footprint estimation for computational 
+research. Nat. Rev. Methods Primers 3 (1), 9. https://doi.org/10.1038/s43586-023- 
+00202-5 . 
+Leiserson, C.E., Thompson, N.C., Emer, J.S., Kuszmaul, B.C., Lampson, B.W., Sanchez, D., 
+Schardl, T.B., 2020. There ’ s plenty of room at the Top: What will drive computer 
+performance after Moore ’ s law? Science 368 (6495), eaam9744. https://doi.org/ 
+10.1126/science.aam9744 . 
+Llama 3 Explore and build with Meta ’ s latest Llama 3 models on Vertex AI, 2024. https 
+://console.cloud.google.com/vertex-ai/publishers/meta/model-garden/llama3?pli 
+= 1 . 
+Luque, A., Carrasco, A., Martín, A., de Las Heras, A., 2019. The impact of class imbalance 
+in classification performance metrics based on the binary confusion matrix. Pattern 
+Recogn. 91, 216 – 231. https://doi.org/10.1016/j.patcog.2019.02.023 . 
+Marinello, F., Bramley, R. G. V., Cohen, Y., Fountas, S., Guo, H., Karkee, M., et al., 2019. 
+Agriculture and digital sustainability: a Digitization Footprint. In: Precision 
+agriculture ’ 19 (pp. 83-89). Wageningen Academic. https://doi.org/10.3920/978 
+-90-8686-888-9 . 
+McGuinness, D.L., Van Harmelen, F., 2004. OWL web ontology language overview. W3C 
+recommendation, 10(10), 2004. https://static.twoday.net/71desa1bif/files/W 
+3C-OWL-Overview.pdf . 
+Meadows, D.H., 1998. Indicators and information systems for sustainable development. 
+https://donellameadows.org/wp-content/userfiles/IndicatorsInformation.pdf . 
+Ohalete, N.C., Aderibigbe, A.O., Ani, E.C., Ohenhen, P.E., Daraojimba, D.O., Odulaja, B. 
+A., 2023. AI-driven solutions in renewable energy: a review of data science 
+applications in solar and wind energy optimization. World J. Adv. Res. Rev. 20 (3), 
+401 – 417. https://doi.org/10.30574/wjarr.2023.20.3.2433 . 
+Pan, S.L., Nishant, R., 2023. Artificial intelligence for digital sustainability: an insight 
+into domain-specific research and future directions. Int. J. Inf. Manage. 72, 102668 
+https://doi.org/10.1016/j.ijinfomgt.2023.102668 . 
+PE INTERNATIONAL. GaBi Database website. Construction Materials exten-sion. 2015. 
+http://www.gabi-software.com/support/gabi/gabi-database-2014-lci-documentati 
+on/extension-database-xiv-construction-materials/ . 
+Pezzuolo, A., Guo, H., Marchesini, G., et al., 2021. Digital technologies and automation 
+in livestock production systems: a digital footprint from multisource data[C]. In: 
+2021 IEEE International Workshop on Metrology for Agriculture and Forestry 
+(MetroAgriFor). IEEE, pp. 258 – 262. https://doi.org/10.1109/ 
+MetroAgriFor52389.2021.9628544 . 
+PwC, 2017. Sizing the prize: What ’ s the real value of AI for your business and how can 
+you capitalise?. https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-ana 
+lysis-sizing-the-prize-report.pdf . 
+Recchioni, M., Mathieux, F., Goralczyk, M., & Schau, E. M. (2013). ILCD Data Network 
+and ELCD Database: current use and further needs for supporting Environmental 
+Footprint and Life Cycle Indicator Projects. Joint Research Centre, Ispra, Italy, 33. 
+https://publications.jrc.ec.europa.eu/repository/bitstream/JRC78218/lb-na-25744 
+-en-n.pdf . 
+Richardson, J.K., 1987. MIPS: The good, the bad and the useful (No. NASA-CR-182893). 
+https://ntrs.nasa.gov/citations/19880014800 . 
+Rindfleisch, A., 2020. The second digital revolution. Mark. Lett. 31, 13 – 17. https://doi. 
+org/10.1007/s11002-019-09509-4 . 
+Robinson, J.T., Devarakonda, M.V., 1990. Data cache management using frequency- 
+based replacement. In: Proceedings of the 1990 ACM SIGMETRICS conference on 
+Measurement and modeling of computer systems, pp. 134-142. https://doi.org/ 
+10.1145/98457.98523 . 
+Swall0w, 2018. torchstat:Model analyzer in PyTorch. https://github.com/Swall0w/torch 
+stat . 
+Tsirogiannis, D., Harizopoulos, S., Shah, M.A., 2010. Analyzing the energy efficiency of a 
+database server. In: Proceedings of the 2010 ACM SIGMOD International Conference 
+on Management of data (pp. 231-242). https://doi.org/10.1145/1807167.1807194 . 
+Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., Weidema, B., 2016. 
+The ecoinvent database version 3 (part I): overview and methodology. Int. J. Life 
+Cycle Assess. 21, 1218 – 1230. https://doi.org/10.1007/s11367-016-1087-8 . 
+Q. Huang et al.                                                                                                                                                                                                                                  

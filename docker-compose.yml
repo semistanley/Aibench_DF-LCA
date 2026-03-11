@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # 单容器模式：同时运行 API 和 Web UI
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dflca-benchmark
+    ports:
+      - "8000:8000"  # API
+      - "8501:8501"  # Streamlit Web UI
+    volumes:
+      # 持久化数据库
+      - ./evaluations.db:/app/evaluations.db
+      # 持久化日志
+      - ./logs:/app/logs
+      # 持久化报告
+      - ./reports:/app/reports
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 分离模式：API 和 Web UI 分别运行（可选）
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dflca-api
+    command: uvicorn simple_api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./evaluations.db:/app/evaluations.db
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    profiles:
+      - separated
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dflca-web
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - api
+    restart: unless-stopped
+    profiles:
+      - separated

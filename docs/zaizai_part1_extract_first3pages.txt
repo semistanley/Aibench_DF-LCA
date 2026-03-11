@@ -1,0 +1,107 @@
+TARGET_FILE: 在投part1.pdf
+PAGES: 37
+METADATA
+/Author: Wang Xu
+/CreationDate: D:20241016151134+08'00'
+/Creator: Microsoft® Word 2016
+/ModDate: D:20241016151134+08'00'
+/Producer: Microsoft® Word 2016
+
+--- PAGE 1 ---
+ 
+ 
+Part 1: How to Assess the Digitization and Digital E1 
+ffort : A Framework for Digitization Footprint 2 
+Corresponding : 
+1st Qiang Huang 
+College of Information 
+Engineering 
+Sichuan Agricultural University 
+Yaan City, China 
+huangqiang@sicau.edu.cn 
+2nd  Xu Wang 
+College of Information 
+Engineering 
+Sichuan Agricultural University 
+Yaan City, China 
+wangxu409@stu.sicau.edu.cn 
+3rd  Qi Gao 
+Department TeSAF 
+University of Padova 
+Legnaro (PD), Italy 
+qi.gao@studenti.unipd.it 
+4thAlberto.carraro 
+Department TeSAF 
+University of Padova 
+Legnaro (PD), Italy 
+alberto.carraro.11@phd.unipd.it 
+5th Andrea Pezzuolo 
+Department TeSAF 
+University of Padova 
+Legnaro (PD), Italy 
+andrea.pezzuolo@unipd.it 
+6th Francesco Marinello 
+Department TeSAF 
+University of Padova 
+Legnaro (PD), Italy 
+francesco.marinello@unipd.it 
+Abstract 3 
+With the advancement of digitisation, data is being collected, transmitted and used in a wide 4 
+range of domains, and ICT estimates that by 2035, the world will have generated 180 ZB of data, and 5 
+that in three hundred years' time, the number of bits generated worldwide may exceed the number of 6 
+atoms on the planet, and virtual environments (VE) may become unsustainable. In this context, 7 
+Digitization Footprint (DF) has been proposed to support the analysis of VE sustainability by 8 
+parameterising the amount of digital information. At present, the lack of methods for DF evaluation 9 
+has led to the fact that the current research on DF only stays in the quantification of data volume, and 10 
+does not quantify the time, effort (costs invested for data storage, processing or transfer). To address 11 
+this problem, this paper proposes a DF -LCA framework based on Data Processing Units (DPUs), 12 
+
+--- PAGE 2 ---
+ 
+ 
+through which the DF of an information system can be scientifically and completely 13 
+quantified.Considering the complexity of the information system's internal situation (data transfer, 14 
+module coupling), it is a challenge to monitor the internal data as well as the metrics. Therefore, by 15 
+abstracting the information system's data manipulation process into a DPU, which is a logical unit, it 16 
+is possible to obtain the information system's DF by monitoring it from the outside without having to 17 
+study the information system's complex interior, which greatly simplifies the difficulty of quantifying 18 
+the DF. In reality, data may be processed multiple times, and the processing may be distributed over 19 
+multiple DPUs, and quantifying the DF of a single DPU does not fully satisfy the needs of DF 20 
+assessment. To address this problem, this paper improves the LCA to DF -LCA by defining the 21 
+topology between DPUs, clarifying the network relationship of data transmission from DPU to DPU, 22 
+and finally obtaining the data link of the output data. Finally the DPUs on the data link of this data 23 
+are monitored with indicators, and the DF of this data can be obtained.In order to solve the problem 24 
+of transmission error on the link, this paper is based on the existing LCA method, and improves the 25 
+data bloodline in the big data, which achieves the function of tracking the data transmission problem 26 
+on the link. In addition, this paper optimises the hierarchical structure of LCA to make it more 27 
+applicable to the analysis of DPU topology results of information systems, and finally integrates the 28 
+three dimensions of performance, energy consumption and value into the index system of DF -LCA. 29 
+Through the above methods, this paper establishes a generic DF assessment framework and provides 30 
+basic model support for DF standardisation. 31 
+Keywords：Digitization Footprint(DF), Life Cycle Assessment (LCA), Virtual Environments (VE), Data 32 
+Processing Unit(DPU), Framework 33 
+
+--- PAGE 3 ---
+ 
+ 
+1 Introduction  34 
+In 1946, ENIAC marked a crucial moment in human history as it marked its entrance into digital 35 
+technology. Since that time, digital electronic technologies have powered an extraordinary revolution 36 
+that is revolutionizing how information is stored, processed and transmitted. Digitization has seen 37 
+unprecedented acceleration over the years, creating exponential data generation rates 38 
+globally(Tihinen et al., 20 16). Today, digitization is continuing at an unprecedented rate and the 39 
+amount of data generated globally is exploding. Information and Communication Technology (ICT) 40 
+(Petroc Taylor,.2023)estimates that the world will generate 180 ZB of data by 2025, and assuming a 41 
+growth rate of 20 per cent, more bits will be generated than all the atoms of the Earth between now 42 
+and 2350 years from now（V opson ,.2022）. 43 
+However, there is a growing debate about whether the digital resources needed to store, process, 44 
+and transmit this burgeoning volume of data can keep up with its rapid growth. Marinello et al. 45 
+addressed this concern by framing it as an issue of virtual environment (VE) sustainability(Marinello 46 
+et al., 2016). VE sustainability aims to achieve longer term benefits and impacts in the digitization 47 
+process by maintaining VE with as few resources as possible. 48 
+To address the issue of VE sustainability, Marinello et al. also proposed the concept of 49 
+Digitization Footprint (DF).DF refers to the cost, time, and volume of data generated by the processes 50 
+of storing, transferring, and processing data in the VE (Marinello et al., 20 16). Parameterising the 51 
+resources consumed by the digitization process through DF can provide data support for VE 52 
+sustainability. However, the current challenge is the lack of a framework system to quantify DF. 53 
+Based on the definition of the DF concept, we are able to analyze the carriers of data (devices, 54 

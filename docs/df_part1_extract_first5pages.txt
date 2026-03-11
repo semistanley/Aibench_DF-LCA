@@ -1,0 +1,543 @@
+TITLE: How to assess the digitization and digital effort: A framework for Digitization Footprint (Part 1)
+DOI: 10.1016/j.compag.2024.109875
+
+--- PAGE 1 ---
+Computers and Electronics in Agriculture 230 (2025) 109875
+Available online 28 December 2024
+0168-1699/© 2024 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license ( http://creativecommons.org/licenses/by-
+nc-nd/4.0/).
+How to assess the digitization and digital effort: A framework for 
+Digitization Footprint (Part 1)
+☆
+Qiang Huang
+a , *
+, Xu Wang
+a
+, Qi Gao
+b
+, Alberto Carraro
+b
+, Andrea Pezzuolo
+b
+,  
+Francesco Marinello
+b
+a
+College of Information Engineering, Sichuan Agricultural University, Yaan City, China
+b
+Department TeSAF, University of Padova, Legnaro, Padua, Italy
+ARTICLE INFO
+Keywords:
+Digitization Footprint (DF)
+Data Processing Unit (DPU)
+Framework
+Life Cycle Assessment (LCA)
+Virtual environments (VE)
+ABSTRACT
+With the advancement of digitization, data is being collected, transmitted and used in a wide range of domains, 
+and ICT estimates that by 2035, the world will have generated 180 ZB of data, and that in three hundred years ’ 
+time, the number of bits generated worldwide may exceed the number of atoms on the planet, and virtual en -
+vironments (VE) may become unsustainable. In this context, Digitization Footprint (DF) has been proposed to 
+support the analysis of VE sustainability by parameterizing the amount of digital information. At present, the lack 
+of methods for DF evaluation has led to the fact that the current research on DF only stays in the quantification of 
+data volume, and does not quantify the time, effort (costs invested for data storage, processing or transfer). To 
+address this problem, this paper proposes a DF-LCA framework based on Data Processing Units (DPUs), through 
+which the DF of an information system can be scientifically and completely quantified. Considering the 
+complexity of the information system ’ s internal situation (data transfer, module coupling), it is a challenge to 
+monitor the internal data as well as the metrics. Therefore, by abstracting the information system ’ s data 
+manipulation process into a DPU, which is a logical unit, it is possible to obtain the information system ’ s DF by 
+monitoring it from the outside without having to study the information system ’ s complex interior, which greatly 
+simplifies the difficulty of quantifying the DF. In reality, data may be processed multiple times, and the pro -
+cessing may be distributed over multiple DPUs, and quantifying the DF of a single DPU does not fully satisfy the 
+needs of DF assessment. To address this problem, this paper improves the LCA to DF-LCA by defining the to -
+pology between DPUs, clarifying the network relationship of data transmission from DPU to DPU, and finally 
+obtaining the data link of the output data. Finally the DPUs on the data link of this data are monitored with 
+indicators, and the DF of this data can be obtained. In order to solve the problem of transmission error on the 
+link, this paper is based on the existing LCA method, and improves the data bloodline in the big data, which 
+achieves the function of tracking the data transmission problem on the link. In addition, this paper optimizes the 
+hierarchical structure of LCA to make it more applicable to the analysis of DPU topology results of information 
+systems, and finally integrates the three dimensions of performance, energy consumption and value into the 
+index system of DF-LCA. Through the above methods, this paper establishes a generic DF assessment framework 
+and provides basic model support for DF standardization.
+1. Introduction
+In 1946, the birth of ENIAC (Electronic Numerical Integrator and 
+Computer), the first electronic computer, marked a key moment in 
+human history, marking the entry of mankind into the era of digital 
+technology. Since that time, digital electronic technologies have 
+powered an extraordinary revolution that is revolutionizing how infor -
+mation is stored, processed and transmitted. Digitization has seen un -
+precedented acceleration over the years, creating exponential data 
+generation rates globally ( Tihinen et al., 2016 ). Today, digitization is 
+continuing at an unprecedented rate and the amount of data generated 
+globally is exploding. Information and Communication Technology 
+☆
+This article is part of a special issue entitled: ‘Sust. Agri. 4.0 ’ published in Computers and Electronics in Agriculture.
+* Corresponding author.
+E-mail addresses: huangqiang@sicau.edu.cn (Q. Huang), wangxu409@stu.sicau.edu.cn (X. Wang), qi.gao@studenti.unipd.it (Q. Gao), alberto.carraro.11@phd. 
+unipd.it (A. Carraro), andrea.pezzuolo@unipd.it (A. Pezzuolo), francesco.marinello@unipd.it (F. Marinello). 
+Contents lists available at ScienceDirect
+Computers and Electronics in Agriculture
+journal homep age: www. elsevier.com/ locate/comp ag
+https://doi.org/10.1016/j.compag.2024.109875
+Received 1 October 2024; Received in revised form 2 December 2024; Accepted 22 December 2024  
+
+--- PAGE 2 ---
+Computers and Electronics in Agriculture 230 (2025) 109875
+2
+(ICT) ( Petroc Taylor, 2023 )estimates that the world will generate 180 ZB 
+of data by 2025, and assuming a growth rate of 20 per cent, more bits 
+will be generated than all the atoms of the Earth between now and 2350 
+years from now ( Vopson, 2020 ).
+However, there is a growing debate about whether the digital re -
+sources needed to store, process, and transmit this burgeoning volume of 
+data can keep up with its rapid growth. Marinello et al. addressed this 
+concern by framing it as an issue of virtual environment (VE) sustain -
+ability (Marinello et al., 2016). VE sustainability aims to achieve longer 
+term benefits and impacts in the digitization process by maintaining VE 
+with as few resources as possible.
+To address the issue of VE sustainability, Marinello et al. also pro -
+posed the concept of Digitization Footprint (DF). DF refers to the cost, 
+time, and volume of data generated by the processes of storing, trans -
+ferring, and processing data in the VE (Marinello et al., 2016). Param -
+eterizing the resources consumed by the digitization process through DF 
+can provide data support for VE sustainability. However, the current 
+challenge is the lack of a framework system to quantify DF.
+Based on the definition of the DF concept, we are able to analyze the 
+carriers of data (devices, software, services, etc.) to get a basic picture of 
+DF. For instance, the authors have quantified the data volume from the 
+perspective of DF for devices in a test field and predicted the future 
+growth of data in that area ( Kayad et al., 2022 ). Similarly, the author 
+applied the generic framework proposed by Marinello et al. to a digital 
+dairy farm, identifying the devices and related technologies that 
+generate the farm’s data ( Marinello et al., 2019, Pezzuolo et al., 2021 ,). 
+While these studies offer insights into DF in terms of data sources or 
+volumes, a scientific and comprehensive quantification of DF remains 
+elusive due to the lack of a robust assessment system.
+In the original study of DF, the authors suggested further research 
+into the application of LCA to analyze VE based on the internal resource 
+consumption of the virtual environment or external inputs and outputs. 
+LCA is a standardized methodology used to assess, both quantitatively 
+and systematically, the impacts on resources and the environment across 
+a product’s life cycle ( ISO, 2006 ). In different areas, the LCA model is 
+adapted to different applications and objectives, e.g. approaches to 
+sustainability assessment include Sustainability Appraisal, Material 
+Flow Analysis (MFA), etc. ( Bond et al., 2012; Graedel, 2019 ). In contrast 
+to other sustainability assessment methods like MFA and Sustainability 
+Appraisal, LCA typically concentrates on environmental impacts, while 
+other methods focus on domain-specific sustainability assessments.
+Traditional LCA methods encounter several challenges when applied 
+directly to VE due to key differences in assessment objectives and the 
+relationship between the environment and the analyzed object. Tradi -
+tional LCA is designed to assess the environmental impact of a product 
+throughout its life cycle, with a focus on the inputs and outputs that 
+affect the environment. On the other hand, the goal of DF is to quantify 
+the capacity and capability of the VE. Additionally, in traditional LCA, 
+the analyzed object is separate from the environment, necessitating the 
+consideration of environmental influences. In contrast, DF analysis en -
+compasses not just the software but also the VE that hosts the software, 
+intertwining the object of analysis with its environment. These differ -
+ences in analysis goals and relationship dynamics make traditional LCA 
+unsuitable for VE.
+To address the above issues, this paper proposes a DF-LCA frame -
+work for evaluating the DF of information systems in VE. Through DF- 
+LCA, the DF of an information system can be analyzed more deeply to 
+obtain detailed information about the DF and its impact on VE. In the 
+DF-LCA framework, this paper defines DPU and their topologies to 
+describe the precise paths and processes of data flow. We optimize the 
+level of LCA to make it more suitable for VE and propose a method for 
+constructing data lineage eigenvalues, which will help trace the data and 
+reduce the errors of DF in the detection process. The three dimensions of 
+performance, energy consumption, and value are further integrated into 
+the DF-LCA metrics system, which can evaluate DF more comprehen -
+sively than the previous evaluation steps and methods. By constructing 
+the DF evaluation system, we propose a generic DF evaluation frame -
+work, which provides a basic model to support the standardization of 
+DF. The ultimate goal of this study is to provide model support for the 
+standardization of DF to facilitate the efficient management and opti -
+mization of data flow in information systems. This paper is followed by a 
+second work, which is mostly focused on the systematized definition of 
+indicators that constitute the reference for the quantification of the 
+digitization contribution ( Huang et al., 2024 ).
+2. Method
+From the physical level, a VE is a topological network consisting of 
+multiple nodes; from the functional level, a VE is composed of many 
+intertwined data links. No matter from which aspect, VE is a complex 
+system, in order to incorporate these two levels into the analysis and 
+simplify the difficulty of analysis, this paper abstracts the data pro -
+cessing process in VE as DPU, which is an abstract logical unit, and by 
+analyzing the whole process of data processing, we finally obtain the 
+data lifecycle model based on DPU. At the same time, in order to analyze 
+VE completely, we need to pay attention to the resources consumed by 
+the data during its lifecycle, and finally provide a data base for the 
+sustainable analysis of VE. However, in practice, without limiting the 
+granularity, the definition of DPU is quite vague, which leads to the 
+possibility of incomplete and missing data lifecycle, therefore, this paper 
+introduces the topological definition of hierarchy and DPU, the hierar -
+chy can clarify the specific granularity, and the topology makes the data 
+flow more clear, both of which make the analysis of the data lifecycle 
+become clear and complete.
+The LCA framework is divided into four steps: identification of ob -
+jectives and scope, inventory analysis, impact assessment, and life cycle 
+interpretation. The DF-LCA framework is similar to the LCA framework, 
+but the process of establishing the data life cycle is different; DF-LCA 
+focuses more on the impact of VEs, and the process of calculating the 
+indicators is related to the way indicators for VE are calculated. Com -
+parison of the DF-LCA’s framework with the LCA framework is shown in 
+Fig. 1 shows that the left figure is the framework of LCA ( Ouellet-Pla -
+mondon and Habert, 2015a; Ouellet-Plamondon and Habert, 2015b ) 
+and the right figure is the framework of DF-LCA.
+The Goal and Scope: This phase mainly focuses on clarifying the 
+research objectives and research targets of DF-LCA, defining DPU, and 
+determining the boundaries of the assessment. Based on the assessment 
+objectives, the hierarchical structure of DPU, DPU topology, and data 
+links are established. Among them, it is also necessary to analyze the 
+integrity of the links and select the corresponding DF dataset of the DPU.
+Inventory Analysis: At this step of DF-LCA, gathering and calculating 
+indicators with the goal of quantifying and computing metrics related to 
+DPU on data links requires collecting relevant scalar values within 
+defined time periods, standardizing indicators by allocating them unit 
+data units, then aggregate indicators per DPU within each link before 
+visualizing using appropriate methods to facilitate understanding and 
+analysis.
+Impact assessment: In DF-LCA’s impact evaluation phase, results 
+from inventory analysis are used to analyze their effect on VE. This 
+assessment takes place through using relationship indicators of DPU 
+against reference indicators to measure impact in order to ascertain any 
+impacts related to them on VE.
+Interpretation: The DF-LCA process entails an exhaustive analysis, 
+from goal and scope definition through inventory evaluation and impact 
+evaluation to impact analysis. Each phase is meticulously planned in 
+order to gain an in-depth knowledge and assessment of data processing 
+within VE. Once complete, a final report summarizes findings and in -
+sights gleaned during every stage, providing a thorough evaluation of DF 
+impact in terms of sustainability of VE. The difference between the two 
+is shown in the Table1 below:
+The main approaches of DF-LCA and LCA frameworks and the cor -
+responding elements in DF-LCA are included in Table 1 . The DF-LCA 
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 3 ---
+Computers and Electronics in Agriculture 230 (2025) 109875
+3
+framework is the result of improvements based on the LCA framework. 
+In contrast, the unit process in LCA is replaced with DPU and the pro -
+cessing of data in VE in DPU is analyzed.
+3. Modeling
+This section focuses on the model definition of the DF-LCA method. 
+Fig. 2 depicts the steps involved with DF-LCA. The process starts by 
+outlining data lifecycle goals and scope definition. This initial stage 
+includes the establishment of the DPU, segmentation levels and repre -
+sentation of topology of DPU. After creating its topological structure, an 
+inventory analysis on data links in this topology takes place. This 
+analysis considers data lineage characteristics and metrics to quantify 
+VE resources consumed when producing information, in turn providing 
+an estimate of DF. Furthermore, this phase requires gathering the met -
+rics collected into aggregate and visual format for further review and 
+Fig. 1. Illustrates the df-lca framework alongside the traditional lca framework. in the phase of defining goals and scope, df-lca undertakes life cycle modeling based 
+on the dpu, analyzes information systems through various levels, and incorporates the topology definition of dpu, data lineage, among other elements. it also includes 
+indicators pertinent to the virtual environment. in contrast, lca bases its approach on the processing unit of a product, determining the product life cycle through 
+defined boundaries and encompassing indicators relevant to the actual environment. left image from ( Ouellet-Plamondon and Habert, 2015a; Ouellet-Plamondon and 
+Habert, 2015b ).
+Table 1 
+The difference between LCA and DF-LCA.
+LCA DF-LCA
+Processing unit Unit process DPU
+Environments Physical environment Virtual environments
+Functional unit Unit products, services, etc. Unit data
+Life cycle Product lifecycle Data life cycle
+Input Materials, Physical 
+Environment Resources
+Data, virtual environment 
+element resources
+Output Products, production by- 
+products, waste, etc.
+Data
+Inventory 
+analysis
+Data collection (materials), 
+data calculation
+Metrics collection, indicator 
+calculation
+Impact 
+assessment
+Potential environmental 
+impacts
+Virtual Environment 
+Sustainability, Accuracy
+Fig. 2. Steps based on DF-LCA framework: Based on the DF-LCA framework, the DF-LCA evaluation steps are DPU definition, level analysis, topology analysis, data 
+life cycle analysis, data lineage collection, parameter collection, parameter processing, and uncertainty analysis.
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 4 ---
+Computers and Electronics in Agriculture 230 (2025) 109875
+4
+visualization.
+Impact assessment marks the final step of the DF-LCA process and 
+evaluates both individual DPU as well as collective effects in VE. This 
+comprehensive approach ensures a deep comprehension and quantifi -
+cation of data processing resources in VE; contributing towards more 
+sustainable and efficient management of digital resources.
+3.1. DPU definition
+In the generic data framework formulated by Marinello et al., entities 
+such as sensors, devices, terminals, etc., constitute the main body of the 
+generic data framework. Although the internal structure of different 
+devices may vary, as a whole, the functional attributes of these devices 
+are the same; they are all a unit that outputs data or store data. There -
+fore, this paper defines these structures with the same functional attri -
+butes as Data Processing Unit (DPU), within which data is processed, 
+stored, created, and captured, and which generate data by consuming 
+VE resources or store data by consuming VE resources. Bj ø rn, A. et al. 
+talk about the main characteristics of LCA, ’ In all applications the 
+assessment takes a life cycle perspective having the function of the 
+studied entity as a focal point, ’ ( Bj ø rn et al., 2018 ) so LCA is a model that 
+dumbs down the internal structure. So, when we carry out the study of 
+DF, we do not need to study the details of the internal structure of the 
+DPU, and we can get the output DF by monitoring the inputs (data, VE 
+resources) external to the DPU. This paper defines the logical unit in 
+which the data is processed, stored, created, and collected. In other 
+operations, such as the DPU and through the DPU, we only pay attention 
+to the inputs and outputs of the DPU itself and the resources consumed, 
+which can provide a more straightforward and more effective analysis 
+and determination of DF concerns.
+When evaluating a DPU, it is important to concentrate on key in -
+formation, including the specific details of the DPU and content relevant 
+to DF. Consequently, a DPU is defined in the form of a set, as follows: 
+DPU = {Id, Name, Type, U{Output, {Inputs}}, U{Processes}, U{In -
+dicators}, U{Context}, U{Subnodes}}. This definition includes individ -
+ual information about the DPU, a set of subnodes, processes, indicators, 
+context, and the input set corresponding to its output, as depicted in 
+Fig. 3 .
+The attributes “ Id ” , “ Name ” , and “ Type ” in a DPU are crucial for 
+providing unique identification, as they record the sequence, name, and 
+type of the DPU. The component “ U{Output, {Inputs}} ” signifies the 
+output and the corresponding set of inputs. This output includes the data 
+type and quantity, mirroring the inputs. It ’ s important to note that not 
+all devices have both input and output. For example, in the generic 
+framework, a data source may only have output, without input. In such 
+cases, data is generated without input and is later stored in devices like 
+memory, where it then acts as input without output during the storage 
+phase.
+The set of data information operations is defined as “ U{Processes} =
+{Computing, Create, Storage … } ” . This element defines the operations a 
+DPU performs on data information. For instance, wireless sensor 
+networks (WSN) and global navigation satellite systems (GNSS) engage 
+in data generation and collection. Meanwhile, distributed systems and 
+cloud services undertake operations like computation and storage on 
+data. One DPU may encompass various data information operations. For 
+instance, data may be produced by sensors in an actual test field and 
+processed prior to being stored into memory within its DPU; including 
+creation, processing, and storage functions all as one operation within 
+that single DPU.
+“ U{Context} ” captures the context of each DPU by recording hard -
+ware details, and any relevant information relevant for inventory anal -
+ysis. It can be defined as U{Context} = Hardware and VE “ to represent 
+both types of hardware that make up each DPU as well as storage ca -
+pacity information such as read frequencies or utilization rates amongst 
+other features that contribute towards effective inventory analysis.
+“ U{Indicators} ” denote the set of indicators used for evaluating DPU. 
+These indicators are determined by evaluation goals and context of DPU, 
+playing an essential part in measuring its sustainability for VE.
+“ U{Subnodes} ” represents a collection of sub-DPU within a DPU. In 
+scenarios where a DPU comprises multiple subsystems, such as in a 
+complex field experiment, the DPU for the experiment includes a 
+Subnodes set, which consists of the DPU of these systems. These Subn -
+odes possess all the attributes of a node: “ Subnodes = {Id, Name, Type, 
+{Input, Output}, {Processes}, {Indicators}, Subnodes} ” , representing a 
+more detailed level of data processing and closely related to the level 
+definition of DPU.
+3.2. Level definition of DPU
+In LCA, based on the original scope of the product, the assessment 
+objective of the product at the company level reports the critical envi -
+ronmental issues of the product. In contrast, at the sustainable con -
+sumption and production area level, LCA helps to study the 
+identification of critical areas of consumption and drivers of environ -
+mental impacts (Stefanie et al., 2014). Accordingly, in DF-LCA, based on 
+the same DPU, under different assessment objectives, the data can pre -
+sent the characteristics of the corresponding assessment objective at 
+different levels. The DPU definition contains the set of subnodes, which 
+represents the subset of DPUs that make up the DPU, and the DPU- 
+specific functionality is required to be assessed under different assess -
+ment objectives. In contrast, the DPU ontology may not have the gran -
+ularity to assess that assessment goal, and it needs to be assessed based 
+on the corresponding functions of the subset DPUs. In this paper, DPUs 
+with the same function and granularity are classified at the same level. 
+Without an evaluation target, there is no way to define the DPUs that 
+constitute a subset of DPUs because the degree of abstraction (granu -
+larity size) of the subset of DPU is not specified.
+At the same level, the type of DPUs is consistent. Through the tiers, 
+the composition of DPU subsets of DPUs at different granularities can be 
+clarified. Analyzing the top-level DPUs from top to bottom can obtain a 
+subset of DPUs from large to small granularity, and we can select the 
+corresponding layer according to the evaluation objective of DF and 
+Fig. 3. DPU definition.
+Q. Huang et al.                                                                                                                                                                                                                                  
+
+--- PAGE 5 ---
+Computers and Electronics in Agriculture 230 (2025) 109875
+5
+define the topology of DPUs for the subset of DPUs in it. For example, in 
+the DF analysis of a piece of experimental field, when analyzing the 
+amount of data generated by this experimental field, we can firstly take 
+the experimental field as the top-level DPU, and then abstract the in -
+formation systems in the whole experimental field to DPUs, and by 
+analyzing the change of the data volume of DPUs of the information 
+systems in the experimental field, we can get the amount of data 
+generated by the piece of experimental field. If the experimental field is 
+divided into levels, Level 1 is the experimental field DPU and Level 2 is 
+the information system DPU, based on this, we can know that levels are 
+the constraints for dividing different granularities.
+3.3. Topology definition of DPU
+The data of an information system is interconnected with the help of 
+network devices, and in the Level of an information system, the data is 
+transmitted among various systems, which makes the DPUs in the Level 
+also present a very complex information interaction relationship. Data 
+usually flows through multiple DPUs to get the final output, and if only 
+the output data of a single DPU is quantified by DF, it is not a complete 
+representation of the overall DF characteristics of an information sys -
+tem. Therefore, this study introduces the graph topology into an archi -
+tecture containing multiple DPUs to ensure a comprehensive analysis of 
+DF characteristics.
+In communication networks, the author introduced graph theory to 
+analyze communication networks, which can effectively express the 
+transmission of the network by considering the various devices in the 
+network as nodes that are graphs, and the links transmitting data as 
+edges of the graph( Barnes and Harary,1983 ); In a study of software 
+rehabilitation, Fosdick using graph-theoretic analysis of data flows for 
+full program optimization (Fosdick, L. D. et al,.1976). Similarly, based 
+on the DPU abstraction described above, we can also view DPUs as nodes 
+to introduce graph theory into the DPU topology. In a DF system, the 
+data transmission between DPU units can be represented by a directed 
+graph to represent the network topology relationship corresponding to 
+its information system. According to the definition of DPU in Section 
+3.3.1, the set of DPUs can be viewed as the set of vertices of a graph, and 
+the logical connection structure of its inputs and outputs can be viewed 
+as the directed transmission edges of DPU data, then the DPU topology 
+can be defined as shown in Eqs. (1) – (3) : 
+G = ( V , E ) (1) 
+V = { DPU
+1
+, DPU
+2
+, ..., DPU
+N
+} (2) 
+E ⊆ V × V (3) 
+In the above definition, V represents the set of vertices (the DPU 
+nodes of the layer), N is the number of DPU nodes, and E represents the 
+directed edge of the graph (the directed communication path between 
+DPU).
+3.4. Data link definition
+The topology of the DPU delineates the network structure of the 
+information system, representing the logical data transmission re -
+lationships between various DPU. However, it cannot be directly applied 
+to analyze complex directed graph networks. In the context of DF 
+analysis for an information system, the entire topology can be dissected 
+based on the specific analysis of data output, allowing for the identifi -
+cation of corresponding DPU nodes. By tracing upstream nodes through 
+their inputs, a subgraph of the DPU topology is obtained, which is 
+defined in this paper as a data link. This data link clarifies the trans -
+mission and consumption process of a DF data result within the DPU 
+topology, aiding in determining the lifecycle characteristics of the data. 
+In DF analysis, the data lifecycle encompasses the entire journey from 
+data generation to its final output. This lifecycle approach enables an 
+assessment of the impact of DF on the VE during the data generation 
+process.
+From a graphical perspective, the data link G
+DL 
+for a specific DPU can 
+be considered a directed acyclic subgraph of the topology in which the 
+DPU resides. The output of this DPU acts as the output for the link, while 
+the outputs of its upstream nodes form the data traceability for this 
+output. The definition of this concept is elaborated in Eqs. (4) – (7) : 
+G
+DL
+⊆ G (4) 
+G
+DL
+= { V
+ʹ
+, E
+ʹ
+} (5) 
+V
+ʹ
+= { DPU
+output
+} ∪ { d ∈ V : ∃ d
+1
+, ..., d
+k
+∈ V . ∀ i = 1 , ... k   1 . ( d
+i
+, d
+i + 1
+) ∈ E , d
+1
+= d , d
+k
+= DPU
+output
+}
+(6) 
+E
+ʹ
+= {( d , d
+ʹ
+) ∈ E : d , d
+ʹ
+∈ V
+ʹ
+} (7) 
+Where DPU
+output 
+represents the DPU corresponding to the output, that 
+is, the node corresponding to the DF data to be observed, G represents 
+the topology graph where node DPU
+output 
+is located, and V ’ is a subset of 
+V, including only the output node DPU
+output 
+and its N upstream nodes. 
+The set E ’ is a subset consisting only of the edges of E connecting the 
+nodes of V ’ .
+Utilizing the modeling approach for the data lifecycle that in -
+corporates DPU, level, topology, and data link, we can apply lifecycle 
+modeling to the reference data framework proposed by Marinello et al 
+( Marinello et al.,2019 ). This reference framework describes the inte -
+gration of three data-intensive technologies in agriculture, encompass -
+ing three primary data lifecycles: Data source, Using devices, and 
+Repository.
+Data source: This is the origin of data generation, including various 
+sensors, the travel trajectories of vehicles, location information gener -
+ated by GNSS, and other information sources.
+Using devices: These are devices that receive data and are respon -
+sible for representation, synthesis, or decision-making. Examples 
+include personal computers, edge computing devices, mobile phones, 
+and industrial equipment.
+Repository: This refers to locations where various data is stored, such 
+as different cloud services, traditional disk storage, etc.
+According to this proposed data lifecycle modeling approach, the 
+devices in this framework can be abstracted as DPU. At a general 
+framework level, a communication topology of device DPU is estab -
+lished. The framework and its topology are shown in Fig. 4 .
+In the presence of a system composed of sensors, PCs, mobile phones, 
+industrial equipment, and other devices, cloud services, and hardware 
+drivers, the system ’ s topology can be represented at the general 
+framework level. In this case, the evaluated boundary can be expressed 
+as the system DPU included in the System level. At the System level, by 
+selecting the data output from the PC for data link analysis, the lifecycle 
+model of that data can be obtained, as shown in the Data link section of 
+the diagram.
+3.5. Data lineage
+According to section 3.4 data links represent a subgraph of the DPU 
+topology, this research uses a depth-first search algorithm for data links, 
+which can obtain a collection of paths of data links, which represents the 
+data source and processing of each input data of the output result of the 
+link, i.e., the Data Lineage of that data. Through Data Lineage, we are 
+able to assess the Data Lineage technique consists of two main factors: 
+objects, which can be devices, programs, etc., and inter-object re -
+lationships, which refer to the specific changes in the data as it is 
+transferred between objects( Cui et al.,2000,Patel et al.,2020 ).The data 
+tracking can be accomplished by recording the changes in the data, 
+which include the changes in the amount of data as well as the changes 
+Q. Huang et al.                                                                                                                                                                                                                                  
